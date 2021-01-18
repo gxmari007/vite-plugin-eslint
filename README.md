@@ -25,6 +25,12 @@ export default defineConfig({
 
 ## Options
 
+| Prop | Description |
+| ------  | ------ |
+| include | A single file, or array of files, to include when linting |
+| exclude | A single file, or array of files, to exclude when linting |
+| formatter | Custom error formatter or the name of a built-in formatter |
+
 ## License
 
 MIT
