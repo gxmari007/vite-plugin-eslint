@@ -17,19 +17,17 @@ import { defineConfig } from 'vite';
 import eslintPlugin from '@gxmari007/vite-plugin-eslint';
 
 export default defineConfig({
-  plugins: [
-    eslintPlugin(),
-  ],
+  plugins: [eslintPlugin()],
 });
 ```
 
 ## Options
 
-| Prop | Description |
-| ------  | ------ |
-| include | A single file, or array of files, to include when linting |
-| exclude | A single file, or array of files, to exclude when linting |
-| formatter | Custom error formatter or the name of a built-in formatter |
+| Prop                                  | Description                                                |
+| :------------------------------------ | :--------------------------------------------------------- |
+| include: string \| string[]           | A single file, or array of files, to include when linting  |
+| exclude: string \| string[]           | A single file, or array of files, to exclude when linting  |
+| formatter: string \| ESLint.Formatter | Custom error formatter or the name of a built-in formatter |
 
 ## License
 
