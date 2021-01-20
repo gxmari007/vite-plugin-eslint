@@ -1,6 +1,6 @@
 {
   "name": "@gxmari007/vite-plugin-eslint",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "A vite eslint plugin.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
@@ -34,7 +34,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
-    "@rollup/plugin-typescript": "^8.1.0",
     "@types/eslint": "^7.2.6",
     "@types/node": "^14.14.21",
     "@typescript-eslint/eslint-plugin": "^4.13.0",
