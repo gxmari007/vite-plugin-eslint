@@ -1,7 +1,8 @@
 import type { Plugin } from 'vite';
 import { ESLint } from 'eslint';
 import { createFilter } from '@rollup/pluginutils';
-import * as path from 'path';
+
+import { checkVueFile, normalizePath } from './utils';
 
 interface Options {
   /** A single file, or array of files, to include when linting. */
@@ -10,10 +11,6 @@ interface Options {
   exclude?: string | string[];
   /** Custom error formatter or the name of a built-in formatter. */
   formatter?: string | ESLint.Formatter;
-}
-
-function normalizePath(id: string) {
-  return path.relative(process.cwd(), id).split(path.sep).join('/');
 }
 
 export default function eslintPlugin(options: Options = {}): Plugin {
@@ -26,7 +23,7 @@ export default function eslintPlugin(options: Options = {}): Plugin {
     async transform(_, id) {
       const file = normalizePath(id);
 
-      if (!filter(id) || (await eslint.isPathIgnored(file)) || file.includes('?')) {
+      if (!filter(id) || (await eslint.isPathIgnored(file)) || checkVueFile(id)) {
         return null;
       }
 

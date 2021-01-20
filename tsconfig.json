@@ -3,7 +3,9 @@
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true,
     "importHelpers": true,
+    "declaration": true,
     "strict": true
   }
 }
