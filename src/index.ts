@@ -2,16 +2,7 @@ import type { Plugin } from 'vite';
 import { ESLint } from 'eslint';
 import { createFilter } from '@rollup/pluginutils';
 
-import { checkVueFile, normalizePath } from './utils';
-
-interface Options {
-  /** A single file, or array of files, to include when linting. */
-  include?: string | string[];
-  /** A single file, or array of files, to exclude when linting. */
-  exclude?: string | string[];
-  /** Custom error formatter or the name of a built-in formatter. */
-  formatter?: string | ESLint.Formatter;
-}
+import { checkVueFile, normalizePath, Options } from './utils';
 
 export default function eslintPlugin(options: Options = {}): Plugin {
   const eslint = new ESLint({});
