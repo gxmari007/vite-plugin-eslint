@@ -1,9 +1,9 @@
-name: release
+name: Release
 
 on:
   push:
     tags:
-      - v*
+      - '*'
 
 jobs:
   publish:
@@ -15,10 +15,23 @@ jobs:
         with:
           node-version: '14'
           registry-url: https://registry.npmjs.org/
+      - name: Cache ~/.pnpm-store
+        uses: actions/cache@main
+        env:
+          cache-name: cache-pnpm-store
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ matrix.node-version }}-build-${{ env.cache-name }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ matrix.node-version }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-${{ matrix.node-version }}-build-
+            ${{ runner.os }}-
+      - name: Install pnpm
+        run: npm i -g pnpm
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install
       - name: Build Package
-        run: yarn build
+        run: pnpm build
       - name: Publish to npm
         run: npm publish
         env:
