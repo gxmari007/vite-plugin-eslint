@@ -10,19 +10,7 @@ jobs:
     name: Publish
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@main
-      - uses: actions/setup-node@main
-        with:
-          node-version: 14
-          check-latest: true
-      - uses: pnpm/action-setup@v1.2.1
-        with:
-          version: 5.16.0
-      - name: Install dependencies
-        run: pnpm install
-      - name: Build Package
-        run: pnpm build
-      - name: Publish to npm
-        run: npm publish
+      - uses: actions/checkout@v2
+      - run: npx conventional-github-releaser -p angular
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
