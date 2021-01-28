@@ -13,4 +13,4 @@ jobs:
       - uses: actions/checkout@v2
       - run: npx conventional-github-releaser -p angular
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          CONVENTIONAL_GITHUB_RELEASER_TOKEN: ${{ secrets.NPM_TOKEN }}
