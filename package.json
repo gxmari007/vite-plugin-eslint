@@ -1,6 +1,6 @@
 {
   "name": "@gxmari007/vite-plugin-eslint",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A vite eslint plugin.",
   "author": "James Gao <gaoxiang.ooxx@gmail.com>",
   "main": "dist/index.js",
