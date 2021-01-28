@@ -8,30 +8,16 @@ on:
 jobs:
   publish:
     name: Publish
-    runs-on: ubuntu-20.04
-    strategy:
-      matrix:
-        node-version: [15]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
-      - name: Use Node.js ${{ matrix.node-version }}.x
-        uses: actions/setup-node@main
+      - uses: actions/setup-node@main
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 14
           check-latest: true
-      - name: Cache ~/.pnpm-store
-        uses: actions/cache@main
-        env:
-          cache-name: cache-pnpm-store
+      - uses: pnpm/action-setup@v1.2.1
         with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-${{ matrix.node-version }}-build-${{ env.cache-name }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ matrix.node-version }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-${{ matrix.node-version }}-build-
-            ${{ runner.os }}-
-      - name: Install pnpm
-        run: npm install -g pnpm
+          version: 5.16.0
       - name: Install dependencies
         run: pnpm install
       - name: Build Package
