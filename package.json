@@ -12,6 +12,7 @@
   "scripts": {
     "dev": "npm run build -- --watch",
     "example:dev": "npm -C example run dev",
+    "example:build": "npm -C example run build",
     "build": "tsup src/index.ts --dts --format esm,cjs",
     "commit": "cz",
     "prepublishOnly": "npm run build",
