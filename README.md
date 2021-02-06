@@ -1,4 +1,4 @@
-# @gxmari007/vite-plugin-eslint
+# vite-plugin-eslint
 
 [![npm (scoped)](https://img.shields.io/npm/v/@gxmari007/vite-plugin-eslint)](https://www.npmjs.com/package/@gxmari007/vite-plugin-eslint)
 [![GitHub license](https://img.shields.io/github/license/gxmari007/vite-plugin-eslint)](https://github.com/gxmari007/vite-plugin-eslint/blob/master/LICENSE)
