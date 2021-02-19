@@ -1,5 +1,5 @@
 {
-  "name": "@gxmari007/vite-plugin-eslint",
+  "name": "vite-plugin-eslint",
   "version": "1.0.4",
   "description": "A vite eslint plugin.",
   "author": "James Gao",
