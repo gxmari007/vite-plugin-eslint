@@ -4,9 +4,15 @@ import { createFilter } from '@rollup/pluginutils';
 
 import { checkVueFile, normalizePath, Options } from './utils';
 
-export default function eslintPlugin(options: Options = {}): Plugin {
-  const eslint = new ESLint({});
-  const filter = createFilter(options.include, options.exclude || /node_modules/);
+export default function eslintPlugin(options?: Options): Plugin {
+  const defaultOptions: Options = {
+    cache: true,
+  };
+  const opts = options ? { ...defaultOptions, ...options } : defaultOptions;
+  const eslint = new ESLint({
+    cache: opts.cache,
+  });
+  const filter = createFilter(opts.include, opts.exclude || /node_modules/);
   let formatter: ESLint.Formatter;
 
   return {
@@ -18,12 +24,12 @@ export default function eslintPlugin(options: Options = {}): Plugin {
         return null;
       }
 
-      switch (typeof options.formatter) {
+      switch (typeof opts.formatter) {
         case 'string':
-          formatter = await eslint.loadFormatter(options.formatter);
+          formatter = await eslint.loadFormatter(opts.formatter);
           break;
         case 'function':
-          ({ formatter } = options);
+          ({ formatter } = opts);
           break;
         default:
           formatter = await eslint.loadFormatter('stylish');

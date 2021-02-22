@@ -3,6 +3,7 @@ import * as path from 'path';
 import type { ESLint } from 'eslint';
 
 export interface Options {
+  cache?: boolean;
   /** A single file, or array of files, to include when linting. */
   include?: string | string[];
   /** A single file, or array of files, to exclude when linting. */

@@ -3,5 +3,11 @@ import vue from '@vitejs/plugin-vue';
 import eslint from 'vite-plugin-eslint';
 
 export default defineConfig({
-  plugins: [vue(), eslint({ include: ['./*.ts', './*.vue'] })],
+  plugins: [
+    vue(),
+    eslint({
+      cache: false,
+      include: ['./*.ts', './*.vue'],
+    }),
+  ],
 });
