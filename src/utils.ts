@@ -3,11 +3,14 @@ import * as path from 'path';
 import type { ESLint } from 'eslint';
 
 export interface Options {
-  /** A single file, or array of files, to include when linting. */
+  cache?: boolean;
+  /** auto fix source code */
+  fix?: boolean;
+  /** a single file, or array of files, to include when linting. */
   include?: string | string[];
-  /** A single file, or array of files, to exclude when linting. */
+  /** a single file, or array of files, to exclude when linting. */
   exclude?: string | string[];
-  /** Custom error formatter or the name of a built-in formatter. */
+  /** custom error formatter or the name of a built-in formatter. */
   formatter?: string | ESLint.Formatter;
 }
 

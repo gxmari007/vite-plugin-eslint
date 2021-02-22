@@ -26,23 +26,40 @@ export default defineConfig({
 
 ## Options
 
-### include
+### `cache`
 
-- **Type** `string | string[]`
+- Type: `boolean`
+- Default: `true`
 
-  A single file, or array of files, to include when linting.
+Decrease execution time.
 
-### exclude
+### `fix`
 
-- **Type** `string | string[]`
+- Type: `boolean`
+- Default: `false`
 
-  A single file, or array of files, to exclude when linting.
+Auto fix source code.
 
-### formatter
+### `include`
 
-- **Type** `string | ESLint.Formatter`
+- Type: `string | string[]`
+- Default: `[]`
 
-  Custom error formatter or the name of a built-in formatter.
+A single file, or array of files, to include when linting.
+
+### `exclude`
+
+- Type: `string | string[]`
+- Default: `['node_modules']`
+
+A single file, or array of files, to exclude when linting.
+
+### `formatter`
+
+- Type: `string | ESLint.Formatter`
+- Default: `stylish`
+
+Custom error formatter or the name of a built-in formatter.
 
 ## License
 
