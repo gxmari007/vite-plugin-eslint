@@ -4,11 +4,13 @@ import type { ESLint } from 'eslint';
 
 export interface Options {
   cache?: boolean;
-  /** A single file, or array of files, to include when linting. */
+  /** auto fix source code */
+  fix?: boolean;
+  /** a single file, or array of files, to include when linting. */
   include?: string | string[];
-  /** A single file, or array of files, to exclude when linting. */
+  /** a single file, or array of files, to exclude when linting. */
   exclude?: string | string[];
-  /** Custom error formatter or the name of a built-in formatter. */
+  /** custom error formatter or the name of a built-in formatter. */
   formatter?: string | ESLint.Formatter;
 }
 

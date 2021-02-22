@@ -33,6 +33,13 @@ export default defineConfig({
 
 Decrease execution time.
 
+### `fix`
+
+- Type: `boolean`
+- Default: `false`
+
+Auto fix source code.
+
 ### `include`
 
 - Type: `string | string[]`
