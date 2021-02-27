@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/v/vite-plugin-eslint)](https://www.npmjs.com/package/vite-plugin-eslint)
 [![GitHub license](https://img.shields.io/github/license/gxmari007/vite-plugin-eslint)](https://github.com/gxmari007/vite-plugin-eslint/blob/master/LICENSE)
 
-A vite ESLint plugin.
+ESLint plugin for vite.
 
 ## Install
 

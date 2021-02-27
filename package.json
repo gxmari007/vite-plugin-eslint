@@ -1,7 +1,7 @@
 {
   "name": "vite-plugin-eslint",
   "version": "1.1.0",
-  "description": "A vite eslint plugin.",
+  "description": "ESLint plugin for vite.",
   "author": "James Gao",
   "license": "MIT",
   "main": "dist/index.js",
