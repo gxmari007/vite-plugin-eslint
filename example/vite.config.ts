@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [
     vue(),
     eslint({
-      cache: true,
+      cache: false,
       fix: false,
       include: ['./*.ts', './*.vue'],
     }),
