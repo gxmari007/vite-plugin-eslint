@@ -47,7 +47,6 @@
     "eslint": "^7.21.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
     "@commitlint/cli": "^12.0.1",
     "@commitlint/config-conventional": "^12.0.1",
     "@types/eslint": "^7.2.6",
