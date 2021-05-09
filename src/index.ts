@@ -22,7 +22,11 @@ export default function eslintPlugin(options?: Options): Plugin {
     async transform(_, id) {
       const file = normalizePath(id);
 
-      if (!filter(id) || (await eslint.isPathIgnored(file)) || checkVueFile(id)) {
+      if (
+        !filter(id) ||
+        (await eslint.isPathIgnored(file)) ||
+        checkVueFile(id)
+      ) {
         return null;
       }
 
