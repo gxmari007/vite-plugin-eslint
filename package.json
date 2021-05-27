@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-eslint",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "ESLint plugin for vite.",
   "author": "James Gao",
   "license": "MIT",
