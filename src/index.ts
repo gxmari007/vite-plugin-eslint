@@ -4,12 +4,13 @@ import { createFilter } from '@rollup/pluginutils';
 
 import { checkVueFile, normalizePath, Options } from './utils';
 
-export default function eslintPlugin(options?: Options): Plugin {
+export default function eslintPlugin(options: Options = {}): Plugin {
   const defaultOptions: Options = {
     cache: true,
     fix: false,
+    include: 'src/**/*',
   };
-  const opts = options ? { ...defaultOptions, ...options } : defaultOptions;
+  const opts = { ...defaultOptions, ...options };
   const eslint = new ESLint({
     cache: opts.cache,
     fix: opts.fix,

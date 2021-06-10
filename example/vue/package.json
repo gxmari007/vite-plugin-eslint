@@ -1,5 +1,5 @@
 {
-  "name": "example",
+  "name": "vue-example",
   "private": true,
   "scripts": {
     "dev": "vite",

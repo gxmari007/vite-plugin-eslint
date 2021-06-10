@@ -11,8 +11,5 @@
     "plugin:@typescript-eslint/recommended",
     "prettier",
     "plugin:prettier/recommended"
-  ],
-  "rules": {
-    "vue/no-multiple-template-root": "off"
-  }
+  ]
 }

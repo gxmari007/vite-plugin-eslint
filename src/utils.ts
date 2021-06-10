@@ -3,14 +3,15 @@ import path from 'path';
 import type { ESLint } from 'eslint';
 
 export interface Options {
+  /** The cache is enabled by default to decrease execution time */
   cache?: boolean;
   /** auto fix source code */
   fix?: boolean;
-  /** a single file, or array of files, to include when linting. */
+  /** A single file, or array of files, to include when linting */
   include?: string | string[];
-  /** a single file, or array of files, to exclude when linting. */
+  /** A single file, or array of files, to exclude when linting */
   exclude?: string | string[];
-  /** custom error formatter or the name of a built-in formatter. */
+  /** custom error formatter or the name of a built-in formatter */
   formatter?: string | ESLint.Formatter;
 }
 
