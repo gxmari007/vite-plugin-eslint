@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/gxmari007/vite-plugin-eslint/compare/v1.1.1...v1.1.2) (2021-06-10)
+
+
+### Bug Fixes
+
+* set the default value of include with `src/**/*` to prevent errors during build ([babe97e](https://github.com/gxmari007/vite-plugin-eslint/commit/babe97ed9ede36d4a8e23c18415928d58dee8cc8)), closes [#3](https://github.com/gxmari007/vite-plugin-eslint/issues/3)
+
 ### [1.1.1](https://github.com/gxmari007/vite-plugin-eslint/compare/v1.1.0...v1.1.1) (2021-05-27)
 
 ## [1.1.0](https://github.com/gxmari007/vite-plugin-eslint/compare/v1.0.5...v1.1.0) (2021-02-22)
