@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
     "allowSyntheticDefaultImports": true,
     "importHelpers": true,
-    "declaration": true,
-    "strict": true
+    "declaration": true
   }
 }

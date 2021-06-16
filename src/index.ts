@@ -8,7 +8,13 @@ export default function eslintPlugin(options: Options = {}): Plugin {
   const defaultOptions: Options = {
     cache: true,
     fix: false,
-    include: 'src/**/*',
+    include: [
+      'src/**/*.js',
+      'src/**/*.jsx',
+      'src/**/*.ts',
+      'src/**/*.tsx',
+      'src/**/*.vue',
+    ],
   };
   const opts = { ...defaultOptions, ...options };
   const eslint = new ESLint({
