@@ -1,3 +1,4 @@
+import path from 'path';
 import type { Plugin } from 'vite';
 import { ESLint } from 'eslint';
 import { createFilter } from '@rollup/pluginutils';
@@ -18,6 +19,11 @@ export default function eslintPlugin(options: Options = {}): Plugin {
   };
   const opts = { ...defaultOptions, ...options };
   const eslint = new ESLint({
+    cacheLocation: path.resolve(
+      process.cwd(),
+      // maybe vite config cacheDir is better ?
+      './node_modules/.vite/vite-plugin-eslint',
+    ),
     cache: opts.cache,
     fix: opts.fix,
   });
