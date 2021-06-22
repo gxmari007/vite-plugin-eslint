@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/gxmari007/vite-plugin-eslint/compare/v1.1.3...v1.2.0) (2021-06-22)
+
+
+### Features
+
+* add cacheLocation settings, remove .eslintcache file ([0df9bd8](https://github.com/gxmari007/vite-plugin-eslint/commit/0df9bd888a8c59ee772922193ce47ba96481a865))
+
 ### [1.1.3](https://github.com/gxmari007/vite-plugin-eslint/compare/v1.1.2...v1.1.3) (2021-06-17)
 
 
