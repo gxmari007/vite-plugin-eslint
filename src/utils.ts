@@ -11,8 +11,12 @@ export interface Options {
   include?: string | string[];
   /** A single file, or array of files, to exclude when linting */
   exclude?: string | string[];
-  /** custom error formatter or the name of a built-in formatter */
+  /** Custom error formatter or the name of a built-in formatter */
   formatter?: string | ESLint.Formatter;
+  /** The warings found will be emitted */
+  throwOnWarning?: boolean;
+  /** The errors found will be emitted */
+  throwOnError?: boolean;
 }
 
 export function normalizePath(id: string): string {

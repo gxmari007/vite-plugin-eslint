@@ -16,6 +16,8 @@ export default function eslintPlugin(options: Options = {}): Plugin {
       'src/**/*.tsx',
       'src/**/*.vue',
     ],
+    throwOnWarning: true,
+    throwOnError: true,
   };
   const opts = { ...defaultOptions, ...options };
   const eslint = new ESLint({
@@ -55,8 +57,10 @@ export default function eslintPlugin(options: Options = {}): Plugin {
       }
 
       const report = await eslint.lintFiles(file);
-      const hasWarnings = report.some((item) => item.warningCount !== 0);
-      const hasErrors = report.some((item) => item.errorCount !== 0);
+      const hasWarnings =
+        opts.throwOnWarning && report.some((item) => item.warningCount !== 0);
+      const hasErrors =
+        opts.throwOnError && report.some((item) => item.errorCount !== 0);
       const result = formatter.format(report);
 
       if (opts.fix && report) {
