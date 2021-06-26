@@ -61,6 +61,20 @@ A single file, or array of files, to exclude when linting.
 
 Custom error formatter or the name of a built-in formatter.
 
+### `throwOnWarning`
+
+- Type: `boolean`
+- Default: `true`
+
+The warings found will be emitted, default to true.
+
+### `throwOnError`
+
+- Type: `boolean`
+- Default: `true`
+
+The errors found will be emitted, default to true.
+
 ## License
 
 MIT
