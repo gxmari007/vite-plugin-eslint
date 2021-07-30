@@ -27,6 +27,7 @@ export default function eslintPlugin(options: Options = {}): Plugin {
       './node_modules/.vite/vite-plugin-eslint',
     ),
     cache: opts.cache,
+    cacheStrategy: 'content',
     fix: opts.fix,
   });
   const filter = createFilter(opts.include, opts.exclude || /node_modules/);
