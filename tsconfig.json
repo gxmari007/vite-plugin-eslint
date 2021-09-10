@@ -7,5 +7,6 @@
     "allowSyntheticDefaultImports": true,
     "importHelpers": true,
     "declaration": true
-  }
+  },
+  "include": ["src/**/*.ts"]
 }
