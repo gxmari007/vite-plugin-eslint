@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@rollup/pluginutils": "^4.1.1",
-    "rollup": "^2.47.0"
+    "rollup": "^2.56.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
