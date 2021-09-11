@@ -1,5 +1,5 @@
-import qs from 'querystring';
-import path from 'path';
+import * as qs from 'querystring';
+import * as path from 'path';
 import type { ESLint } from 'eslint';
 
 export interface Options {

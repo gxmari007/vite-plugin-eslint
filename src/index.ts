@@ -1,4 +1,4 @@
-import path from 'path';
+import * as path from 'path';
 import type { Plugin } from 'vite';
 import { ESLint } from 'eslint';
 import { createFilter } from '@rollup/pluginutils';

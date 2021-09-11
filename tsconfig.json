@@ -4,8 +4,8 @@
     "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
-    "allowSyntheticDefaultImports": true,
     "importHelpers": true,
     "declaration": true
-  }
+  },
+  "include": ["src/**/*.ts"]
 }

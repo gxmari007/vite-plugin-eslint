@@ -8,5 +8,9 @@
     "sourceType": "module",
     "ecmaVersion": 2021
   },
-  "extends": ["plugin:@typescript-eslint/recommended", "prettier", "plugin:prettier/recommended"]
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:prettier/recommended"
+  ]
 }
