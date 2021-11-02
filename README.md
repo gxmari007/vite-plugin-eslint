@@ -33,6 +33,13 @@ export default defineConfig({
 
 Decrease execution time.
 
+### `cacheLocation`
+
+- Type: `string`
+- Default: `./node_modules/.vite/vite-plugin-eslint`
+
+Path to the cache file or directory.
+
 ### `fix`
 
 - Type: `boolean`

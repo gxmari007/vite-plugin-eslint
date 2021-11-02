@@ -18,14 +18,11 @@ export default function eslintPlugin(options: Options = {}): Plugin {
     ],
     throwOnWarning: true,
     throwOnError: true,
+    cacheLocation: './node_modules/.vite/vite-plugin-eslint',
   };
   const opts = { ...defaultOptions, ...options };
   const eslint = new ESLint({
-    cacheLocation: path.resolve(
-      process.cwd(),
-      // maybe vite config cacheDir is better ?
-      './node_modules/.vite/vite-plugin-eslint',
-    ),
+    cacheLocation: path.resolve(process.cwd(), opts.cacheLocation as string),
     cache: opts.cache,
     fix: opts.fix,
   });

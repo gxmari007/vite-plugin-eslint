@@ -5,6 +5,8 @@ import type { ESLint } from 'eslint';
 export interface Options {
   /** The cache is enabled by default to decrease execution time */
   cache?: boolean;
+  /** Path to the cache file or directory */
+  cacheLocation?: string;
   /** auto fix source code */
   fix?: boolean;
   /** A single file, or array of files, to include when linting */
