@@ -5,7 +5,7 @@ import { createFilter } from '@rollup/pluginutils';
 
 import { checkVueFile, normalizePath, Options } from './utils';
 
-export type Options;
+export { Options };
 
 export default function eslintPlugin(options: Options = {}): Plugin {
   const defaultOptions: Options = {
