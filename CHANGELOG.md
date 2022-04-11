@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/gxmari007/vite-plugin-eslint/compare/v1.3.0...v1.4.0) (2022-04-11)
+
+
+### Features
+
+* export options types ([82ae866](https://github.com/gxmari007/vite-plugin-eslint/commit/82ae866960cb9221dd7f62b3954d7724ed22629a))
+
 ## [1.3.0](https://github.com/gxmari007/vite-plugin-eslint/compare/v1.2.0...v1.3.0) (2021-06-26)
 
 
