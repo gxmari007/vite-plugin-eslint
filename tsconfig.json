@@ -3,9 +3,6 @@
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
-    "strict": true,
-    "importHelpers": true,
-    "declaration": true
-  },
-  "include": ["src/**/*.ts"]
+    "strict": true
+  }
 }
