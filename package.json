@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "dev": "npm run build -- --watch src",
-    "lint": "eslint src",
+    "lint": "eslint ./src --ext .js,.ts",
     "example:vue-dev": "pnpm run dev --filter example-vue",
     "example:vue-build": "pnpm run build --filter example-vue",
     "example:react-dev": "pnpm run dev --filter example-react",
