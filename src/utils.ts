@@ -2,11 +2,12 @@ import * as qs from 'querystring'
 import * as path from 'path'
 import type { ESLint } from 'eslint'
 
-export interface Options {
+/** ESlint plugin options, extending from ESlint options */
+export interface Options extends ESLint.Options {
   /** The cache is enabled by default to decrease execution time */
-  cache?: boolean
+  // cache?: boolean
   /** auto fix source code */
-  fix?: boolean
+  // fix?: boolean
   /** A single file, or array of files, to include when linting */
   include?: string | string[]
   /** A single file, or array of files, to exclude when linting */

@@ -11,6 +11,7 @@ specifiers:
   eslint: ^8.13.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-prettier: ^4.0.0
+  eslint-plugin-vue: ^8.6.0
   prettier: ^2.6.2
   rollup: ^2.70.2
   standard-version: ^9.3.2
@@ -33,6 +34,7 @@ devDependencies:
   eslint: 8.13.0
   eslint-config-prettier: 8.5.0_eslint@8.13.0
   eslint-plugin-prettier: 4.0.0_1815ac95b7fb26c13c7d48a8eef62d0f
+  eslint-plugin-vue: 8.6.0_eslint@8.13.0
   prettier: 2.6.2
   standard-version: 9.3.2
   tsup: 5.12.5_typescript@4.6.3
@@ -1389,6 +1391,21 @@ packages:
       eslint-config-prettier: 8.5.0_eslint@8.13.0
       prettier: 2.6.2
       prettier-linter-helpers: 1.0.0
+    dev: true
+
+  /eslint-plugin-vue/8.6.0_eslint@8.13.0:
+    resolution: {integrity: sha512-abXiF2J18n/7ZPy9foSlJyouKf54IqpKlNvNmzhM93N0zs3QUxZG/oBd3tVPOJTKg7SlhBUtPxugpqzNbgGpQQ==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    peerDependencies:
+      eslint: ^6.2.0 || ^7.0.0 || ^8.0.0
+    dependencies:
+      eslint: 8.13.0
+      eslint-utils: 3.0.0_eslint@8.13.0
+      natural-compare: 1.4.0
+      semver: 7.3.7
+      vue-eslint-parser: 8.3.0_eslint@8.13.0
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /eslint-scope/5.1.1:
@@ -3274,6 +3291,24 @@ packages:
       rollup: 2.70.2
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
+
+  /vue-eslint-parser/8.3.0_eslint@8.13.0:
+    resolution: {integrity: sha512-dzHGG3+sYwSf6zFBa0Gi9ZDshD7+ad14DGOdTLjruRVgZXe2J+DcZ9iUhyR48z5g1PqRa20yt3Njna/veLJL/g==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    peerDependencies:
+      eslint: '>=6.0.0'
+    dependencies:
+      debug: 4.3.4
+      eslint: 8.13.0
+      eslint-scope: 7.1.1
+      eslint-visitor-keys: 3.3.0
+      espree: 9.3.1
+      esquery: 1.4.0
+      lodash: 4.17.21
+      semver: 7.3.7
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /vue/3.2.33:
