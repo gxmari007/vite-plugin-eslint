@@ -4,7 +4,7 @@ import { ESLint } from 'eslint'
 import { createFilter } from '@rollup/pluginutils'
 
 import { name } from '../package.json'
-import { Options } from './utils'
+import { Options } from './types'
 
 export { Options }
 
@@ -15,18 +15,18 @@ export default function eslintPlugin(options: Options = {}): Plugin {
   return {
     name,
     configResolved(config) {
-      const userOptions = Object.assign<Options, Options>(options, {
-        include: ['src/**/*'],
-      })
-      const eslintOptions = Object.assign<Options, Options>(
+      const userOptions = Object.assign<Options, Options>(
         {
+          include: 'src/**/*',
+          exclude: /node_modules/,
           // Use vite cacheDir as default
           cacheLocation: resolve(config.cacheDir, '.eslintcache'),
         },
         options
       )
+      const { include, exclude, ...eslintOptions } = userOptions
 
-      filter = createFilter()
+      filter = createFilter(include, exclude)
       eslint = new ESLint(eslintOptions)
     },
     async transform(_, id) {
@@ -35,6 +35,8 @@ export default function eslintPlugin(options: Options = {}): Plugin {
       if (!filter(filePath)) {
         return null
       }
+
+      console.log('pass', id)
     },
   }
 }
