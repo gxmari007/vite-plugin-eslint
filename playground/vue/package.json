@@ -1,3 +1,14 @@
 {
-  "private": true
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "vue": "^3.2.33"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.1",
+    "vite-plugin-eslint": "workspace:^1.4.0"
+  }
 }

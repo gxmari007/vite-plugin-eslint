@@ -32,11 +32,11 @@ export default function eslintPlugin(options: Options = {}): Plugin {
     async transform(_, id) {
       const filePath = normalizePath(id)
 
-      if (!filter(filePath)) {
+      if (!filter(filePath) || (await eslint.isPathIgnored(filePath))) {
         return null
       }
 
-      console.log('pass', id)
+      console.log('pass', filePath)
     },
   }
 }

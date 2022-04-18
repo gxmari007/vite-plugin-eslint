@@ -19,8 +19,6 @@
   "scripts": {
     "dev": "npm run build -- --watch ./src",
     "lint": "eslint ./src --ext .js,.ts",
-    "dev:vue": "vite ./playground/vue",
-    "build:vue": "vite build ./playground/vue",
     "build": "tsup",
     "prepublishOnly": "npm run build",
     "release": "standard-version"
