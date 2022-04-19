@@ -10,7 +10,9 @@ ESLint plugin for vite.
 ```
 npm install vite-plugin-eslint --save-dev
 # or
-yarn add vite-plugin-eslint --dev
+yarn add vite-plugin-eslint -D
+# or
+pnpm add vite-plugin-eslint -D
 ```
 
 ## Usage
@@ -31,7 +33,7 @@ You can pass [eslint options](https://eslint.org/docs/developer-guide/nodejs-api
 ### `cache`
 
 - Type: `boolean`
-- Default: `true`
+- Default: `false`
 
 Decrease execution time.
 
@@ -44,24 +46,24 @@ Auto fix source code.
 
 ### `include`
 
-- Type: `string | string[]`
-- Default: `['src/**/*.js', 'src/**/*.jsx', 'src/**/*.ts', 'src/**/*.tsx', 'src/**/*.vue']`
+- Type: `string | RegExp | ReadonlyArray<string | RegExp>`
+- Default: `'src/**/*'`
 
 A single file, or array of files, to include when linting.
 
 ### `exclude`
 
-- Type: `string | string[]`
-- Default: `'node_modules'`
+- Type: `string | RegExp | ReadonlyArray<string | RegExp>`
+- Default: `/node_modules/`
 
 A single file, or array of files, to exclude when linting.
 
 ### `formatter`
 
-- Type: `string | ESLint.Formatter`
+- Type: `string | ESLint.Formatter['format']`
 - Default: `stylish`
 
-Custom error formatter or the name of a built-in formatter.
+Custom error formatter or the name of a built-in formatter function.
 
 ### `throwOnWarning`
 
