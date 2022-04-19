@@ -26,6 +26,8 @@ export default defineConfig({
 
 ## Options
 
+You can pass [eslint options](https://eslint.org/docs/developer-guide/nodejs-api#-new-eslintoptions).
+
 ### `cache`
 
 - Type: `boolean`

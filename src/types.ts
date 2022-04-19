@@ -12,7 +12,7 @@ export interface Options extends ESLint.Options {
   /** A single file, or array of files, to exclude when linting */
   exclude?: FilterPattern
   /** Custom error formatter or the name of a built-in formatter */
-  formatter?: string | ESLint.Formatter
+  formatter?: string | ESLint.Formatter['format']
   /** The warings found will be emitted */
   throwOnWarning?: boolean
   /** The errors found will be emitted */

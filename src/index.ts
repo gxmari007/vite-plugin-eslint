@@ -11,23 +11,38 @@ export { Options }
 export default function eslintPlugin(options: Options = {}): Plugin {
   let eslint: ESLint
   let filter: ReturnType<typeof createFilter>
+  let formatter: ESLint.Formatter['format']
+  let userOptions: Options
 
   return {
     name,
-    configResolved(config) {
-      const userOptions = Object.assign<Options, Options>(
+    async configResolved(config) {
+      userOptions = Object.assign<Options, Options>(
         {
           include: 'src/**/*',
           exclude: /node_modules/,
           // Use vite cacheDir as default
           cacheLocation: resolve(config.cacheDir, '.eslintcache'),
+          formatter: 'stylish',
+          throwOnWarning: true,
+          throwOnError: true,
         },
         options
       )
-      const { include, exclude, ...eslintOptions } = userOptions
+      const { include, exclude, formatter: userFormatter, ...eslintOptions } = userOptions
 
       filter = createFilter(include, exclude)
       eslint = new ESLint(eslintOptions)
+
+      switch (typeof userFormatter) {
+        case 'string':
+          formatter = (await eslint.loadFormatter(userFormatter)).format
+          break
+        case 'function':
+          formatter = userFormatter
+        default:
+          break
+      }
     },
     async transform(_, id) {
       const filePath = normalizePath(id)
@@ -36,7 +51,24 @@ export default function eslintPlugin(options: Options = {}): Plugin {
         return null
       }
 
-      console.log('pass', filePath)
+      const report = await eslint.lintFiles(filePath)
+      const hasWarnings = userOptions.throwOnWarning && report.some((item) => item.warningCount > 0)
+      const hasErrors = userOptions.throwOnError && report.some((item) => item.errorCount > 0)
+      const result = formatter(report)
+
+      if (userOptions.fix && report) {
+        ESLint.outputFixes(report)
+      }
+
+      if (hasWarnings) {
+        this.warn(typeof result === 'string' ? result : await result)
+      }
+
+      if (hasErrors) {
+        this.error(typeof result === 'string' ? result : await result)
+      }
+
+      return null
     },
   }
 }
