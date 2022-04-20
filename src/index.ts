@@ -29,7 +29,16 @@ export default function eslintPlugin(options: Options = {}): Plugin {
         },
         options
       )
-      const { include, exclude, formatter: userFormatter, ...eslintOptions } = userOptions
+      const {
+        include,
+        exclude,
+        formatter: userFormatter,
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        throwOnError,
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        throwOnWarning,
+        ...eslintOptions
+      } = userOptions
 
       filter = createFilter(include, exclude)
       eslint = new ESLint(eslintOptions)

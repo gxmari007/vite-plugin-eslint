@@ -63,7 +63,7 @@ A single file, or array of files, to exclude when linting.
 - Type: `string | ESLint.Formatter['format']`
 - Default: `stylish`
 
-Custom error formatter or the name of a built-in formatter function.
+Custom error formatter or the name of a built-in formatter.
 
 ### `throwOnWarning`
 
