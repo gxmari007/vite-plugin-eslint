@@ -3,10 +3,6 @@ import type { FilterPattern } from '@rollup/pluginutils'
 
 /** ESlint plugin options, extending from ESlint options */
 export interface Options extends ESLint.Options {
-  /** The cache is enabled by default to decrease execution time */
-  // cache?: boolean
-  /** auto fix source code */
-  // fix?: boolean
   /** A single file, or array of files, to include when linting */
   include?: FilterPattern
   /** A single file, or array of files, to exclude when linting */
