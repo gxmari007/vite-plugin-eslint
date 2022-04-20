@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.1](https://github.com/gxmari007/vite-plugin-eslint/compare/v1.5.0...v1.5.1) (2022-04-20)
+
+
+### Bug Fixes
+
+* set `include` default value to `/\.(jsx?|tsx?|vue|svelte)$/` ([6d09b28](https://github.com/gxmari007/vite-plugin-eslint/commit/6d09b28382a7a3295a1d51bb69589c46bcfe31af))
+
 ## [1.5.0](https://github.com/gxmari007/vite-plugin-eslint/compare/v1.4.0...v1.5.0) (2022-04-20)
 
 
