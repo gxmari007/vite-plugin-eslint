@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/gxmari007/vite-plugin-eslint/compare/v1.4.0...v1.5.0) (2022-04-20)
+
+
+### Features
+
+* can pass eslint options ([e19147a](https://github.com/gxmari007/vite-plugin-eslint/commit/e19147afb98d381002343a04744595b880d1c803))
+* set default options cache: false, include: src/**/*, exclude: /node_modules/ ([99fa887](https://github.com/gxmari007/vite-plugin-eslint/commit/99fa887313d1ab2281d4ad2931fb37e28cc7dee1))
+
 ## [1.4.0](https://github.com/gxmari007/vite-plugin-eslint/compare/v1.3.0...v1.4.0) (2022-04-11)
 
 
