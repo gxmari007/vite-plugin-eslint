@@ -47,7 +47,7 @@ Auto fix source code.
 ### `include`
 
 - Type: `string | RegExp | ReadonlyArray<string | RegExp>`
-- Default: `'src/**/*'`
+- Default: `/\.(jsx?|tsx?|vue|svelte)$/`
 
 A single file, or array of files, to include when linting.
 

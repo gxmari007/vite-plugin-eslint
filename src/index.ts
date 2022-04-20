@@ -1,10 +1,11 @@
-import { normalizePath, Plugin } from 'vite'
+import { Plugin } from 'vite'
 import { resolve } from 'path'
 import { ESLint } from 'eslint'
 import { createFilter } from '@rollup/pluginutils'
 
 import { name } from '../package.json'
 import { Options } from './types'
+import { parseRequest } from './utils'
 
 export { Options }
 
@@ -19,7 +20,7 @@ export default function eslintPlugin(options: Options = {}): Plugin {
     async configResolved(config) {
       userOptions = Object.assign<Options, Options>(
         {
-          include: 'src/**/*',
+          include: /\.(jsx?|tsx?|vue|svelte)$/,
           exclude: /node_modules/,
           // Use vite cacheDir as default
           cacheLocation: resolve(config.cacheDir, '.eslintcache'),
@@ -54,7 +55,7 @@ export default function eslintPlugin(options: Options = {}): Plugin {
       }
     },
     async transform(_, id) {
-      const filePath = normalizePath(id)
+      const filePath = parseRequest(id)
 
       if (!filter(filePath) || (await eslint.isPathIgnored(filePath))) {
         return null
