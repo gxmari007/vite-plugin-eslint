@@ -54,7 +54,7 @@
     "vite": "^2.9.5"
   },
   "peerDependencies": {
-    "eslint": "^7.0.0",
+    "eslint": ">=7",
     "vite": "^2.0.0"
   }
 }
