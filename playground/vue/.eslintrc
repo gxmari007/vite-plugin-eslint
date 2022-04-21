@@ -3,6 +3,7 @@
   "parserOptions": {
     "parser": "@typescript-eslint/parser"
   },
+  "plugins": ["@typescript-eslint"],
   "extends": [
     "plugin:vue/vue3-recommended",
     "../../.eslintrc"

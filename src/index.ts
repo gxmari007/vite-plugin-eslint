@@ -14,6 +14,7 @@ export default function eslintPlugin(options: Options = {}): Plugin {
   let filter: ReturnType<typeof createFilter>
   let formatter: ESLint.Formatter['format']
   let userOptions: Options
+  const pathCache: string[] = []
 
   return {
     name,
@@ -61,7 +62,11 @@ export default function eslintPlugin(options: Options = {}): Plugin {
         return null
       }
 
-      const report = await eslint.lintFiles(filePath)
+      if (userOptions.cache && !pathCache.includes(filePath)) {
+        pathCache.push(filePath)
+      }
+
+      const report = await eslint.lintFiles(userOptions.cache ? pathCache : filePath)
       const hasWarnings = userOptions.throwOnWarning && report.some((item) => item.warningCount > 0)
       const hasErrors = userOptions.throwOnError && report.some((item) => item.errorCount > 0)
       const result = formatter(report)
