@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.2](https://github.com/gxmari007/vite-plugin-eslint/compare/v1.5.1...v1.5.2) (2022-04-21)
+
+
+### Bug Fixes
+
+* install eslint8 warning ([1c9ced4](https://github.com/gxmari007/vite-plugin-eslint/commit/1c9ced434b9a46fc1e40e8954f1430b19c1cd551))
+
 ### [1.5.1](https://github.com/gxmari007/vite-plugin-eslint/compare/v1.5.0...v1.5.1) (2022-04-20)
 
 
