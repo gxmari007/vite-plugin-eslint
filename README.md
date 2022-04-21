@@ -35,7 +35,8 @@ You can pass [eslint options](https://eslint.org/docs/developer-guide/nodejs-api
 - Type: `boolean`
 - Default: `false`
 
-Decrease execution time.
+Decrease execution time.  
+`Beta` Cache now correctly recognizes file changes, you can try it out.
 
 ### `fix`
 

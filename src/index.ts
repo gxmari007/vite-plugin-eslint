@@ -14,7 +14,8 @@ export default function eslintPlugin(options: Options = {}): Plugin {
   let filter: ReturnType<typeof createFilter>
   let formatter: ESLint.Formatter['format']
   let userOptions: Options
-  const pathCache: string[] = []
+  // If cache is true, it will save all path.
+  const pathCache = new Set<string>()
 
   return {
     name,
@@ -62,11 +63,11 @@ export default function eslintPlugin(options: Options = {}): Plugin {
         return null
       }
 
-      if (userOptions.cache && !pathCache.includes(filePath)) {
-        pathCache.push(filePath)
+      if (userOptions.cache && !pathCache.has(filePath)) {
+        pathCache.add(filePath)
       }
 
-      const report = await eslint.lintFiles(userOptions.cache ? pathCache : filePath)
+      const report = await eslint.lintFiles(userOptions.cache ? Array.from(pathCache) : filePath)
       const hasWarnings = userOptions.throwOnWarning && report.some((item) => item.warningCount > 0)
       const hasErrors = userOptions.throwOnError && report.some((item) => item.errorCount > 0)
       const result = formatter(report)
