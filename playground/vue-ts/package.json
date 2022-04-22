@@ -1,0 +1,16 @@
+{
+  "name": "vue-ts",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "vue": "^3.2.33"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.1",
+    "eslint-plugin-vue": "^8.7.0",
+    "vite-plugin-eslint": "workspace:*"
+  }
+}

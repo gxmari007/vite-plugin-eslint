@@ -1,5 +1,5 @@
 {
-  "name": "vue-test",
+  "name": "vue-js",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.1",
-    "eslint-plugin-vue": "^8.6.0",
-    "vite-plugin-eslint": "workspace:^1.4.0"
+    "eslint-plugin-vue": "^8.7.0",
+    "vite-plugin-eslint": "workspace:*"
   }
 }

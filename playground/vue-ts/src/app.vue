@@ -5,7 +5,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-const title = ref('Vue Playground')
+const title = ref('vue-ts')
 </script>
 
 <style scoped>

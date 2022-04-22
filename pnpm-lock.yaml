@@ -1,5 +1,11 @@
 lockfileVersion: 5.3
 
+overrides:
+  vite-plugin-eslint: workspace:*
+  vue: ^3.2.33
+  '@vitejs/plugin-vue': ^2.3.1
+  eslint-plugin-vue: ^8.7.0
+
 importers:
 
   .:
@@ -37,7 +43,7 @@ importers:
       typescript: 4.6.3
       vite: 2.9.5
 
-  playground/react:
+  playground/react-ts:
     specifiers:
       '@types/react': ^18.0.5
       '@types/react-dom': ^18.0.1
@@ -45,7 +51,7 @@ importers:
       eslint-plugin-react: ^7.29.4
       react: ^18.0.0
       react-dom: ^18.0.0
-      vite-plugin-eslint: workspace:^1.4.0
+      vite-plugin-eslint: workspace:*
     dependencies:
       react: 18.0.0
       react-dom: 18.0.0_react@18.0.0
@@ -56,17 +62,30 @@ importers:
       eslint-plugin-react: 7.29.4_eslint@8.13.0
       vite-plugin-eslint: link:../..
 
-  playground/vue:
+  playground/vue-js:
     specifiers:
       '@vitejs/plugin-vue': ^2.3.1
-      eslint-plugin-vue: ^8.6.0
-      vite-plugin-eslint: workspace:^1.4.0
+      eslint-plugin-vue: ^8.7.0
+      vite-plugin-eslint: workspace:*
       vue: ^3.2.33
     dependencies:
       vue: 3.2.33
     devDependencies:
       '@vitejs/plugin-vue': 2.3.1_vite@2.9.5+vue@3.2.33
-      eslint-plugin-vue: 8.6.0_eslint@8.13.0
+      eslint-plugin-vue: 8.7.0_eslint@8.13.0
+      vite-plugin-eslint: link:../..
+
+  playground/vue-ts:
+    specifiers:
+      '@vitejs/plugin-vue': ^2.3.1
+      eslint-plugin-vue: ^8.7.0
+      vite-plugin-eslint: workspace:*
+      vue: ^3.2.33
+    dependencies:
+      vue: 3.2.33
+    devDependencies:
+      '@vitejs/plugin-vue': 2.3.1_vite@2.9.5+vue@3.2.33
+      eslint-plugin-vue: 8.7.0_eslint@8.13.0
       vite-plugin-eslint: link:../..
 
 packages:
@@ -933,6 +952,10 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /boolbase/1.0.0:
+    resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
+    dev: true
+
   /brace-expansion/1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
     dependencies:
@@ -1359,6 +1382,12 @@ packages:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
+    dev: true
+
+  /cssesc/3.0.0:
+    resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
+    engines: {node: '>=4'}
+    hasBin: true
     dev: true
 
   /csstype/2.6.20:
@@ -1842,8 +1871,8 @@ packages:
       string.prototype.matchall: 4.0.7
     dev: true
 
-  /eslint-plugin-vue/8.6.0_eslint@8.13.0:
-    resolution: {integrity: sha512-abXiF2J18n/7ZPy9foSlJyouKf54IqpKlNvNmzhM93N0zs3QUxZG/oBd3tVPOJTKg7SlhBUtPxugpqzNbgGpQQ==}
+  /eslint-plugin-vue/8.7.0_eslint@8.13.0:
+    resolution: {integrity: sha512-0Heo1gHDTjU8+5WvfBPEyNqQpzuynbLLebwxh2/xPK0FkEOJlRCwuf1MjGmkidacF2735u5ApRhse18CWTt9Wg==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^6.2.0 || ^7.0.0 || ^8.0.0
@@ -1851,6 +1880,8 @@ packages:
       eslint: 8.13.0
       eslint-utils: 3.0.0_eslint@8.13.0
       natural-compare: 1.4.0
+      nth-check: 2.0.1
+      postcss-selector-parser: 6.0.10
       semver: 7.3.7
       vue-eslint-parser: 8.3.0_eslint@8.13.0
     transitivePeerDependencies:
@@ -2993,6 +3024,12 @@ packages:
       path-key: 3.1.1
     dev: true
 
+  /nth-check/2.0.1:
+    resolution: {integrity: sha512-it1vE95zF6dTT9lBsYbxvqh0Soy4SPowchj0UBGj/V6cTPnXXtQOPUbhZ6CmGzAD/rW22LQK6E96pcdJXk4A4w==}
+    dependencies:
+      boolbase: 1.0.0
+    dev: true
+
   /null-check/1.0.0:
     resolution: {integrity: sha512-j8ZNHg19TyIQOWCGeeQJBuu6xZYIEurf8M1Qsfd8mFrGEfIZytbw18YjKWg+LcO25NowXGZXZpKAx+Ui3TFfDw==}
     engines: {node: '>=0.10.0'}
@@ -3254,6 +3291,14 @@ packages:
     dependencies:
       lilconfig: 2.0.5
       yaml: 1.10.2
+    dev: true
+
+  /postcss-selector-parser/6.0.10:
+    resolution: {integrity: sha512-IQ7TZdoaqbT+LCpShg46jnZVlhWD2w6iQYAcYXfHARZ7X1t/UGhhceQDs5X0cGqKvYlHNOuv7Oa1xmb0oQuA3w==}
+    engines: {node: '>=4'}
+    dependencies:
+      cssesc: 3.0.0
+      util-deprecate: 1.0.2
     dev: true
 
   /postcss/8.4.12:
