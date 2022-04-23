@@ -62,9 +62,8 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
       if (!filter(filePath) || (await eslint.isPathIgnored(filePath))) {
         return null
       }
-      console.log(filePath)
 
-      if (options.cache && !pathCache.has(filePath)) {
+      if (options.cache) {
         pathCache.add(filePath)
       }
 
