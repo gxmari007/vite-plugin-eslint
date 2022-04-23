@@ -2,14 +2,14 @@
   <div class="root">{{ title }}</div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { ref } from 'vue'
 
-const title = ref('vue-js')
+const title = ref('About page')
 </script>
 
 <style scoped>
 .root {
-  font-size: 18px;
+  font-size: 14px;
 }
 </style>

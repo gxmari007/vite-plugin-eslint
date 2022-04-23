@@ -5,11 +5,11 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-const title = ref('vue-ts')
+const title = ref('Home page')
 </script>
 
 <style scoped>
 .root {
-  font-size: 18px;
+  font-size: 14px;
 }
 </style>

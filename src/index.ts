@@ -9,18 +9,18 @@ import { parseRequest } from './utils'
 
 export { Options }
 
-export default function eslintPlugin(options: Options = {}): Plugin {
+export default function eslintPlugin(rawOptions: Options = {}): Plugin {
   let eslint: ESLint
   let filter: ReturnType<typeof createFilter>
   let formatter: ESLint.Formatter['format']
-  let userOptions: Options
+  let options: Options
   // If cache is true, it will save all path.
   const pathCache = new Set<string>()
 
   return {
     name,
     async configResolved(config) {
-      userOptions = Object.assign<Options, Options>(
+      options = Object.assign<Options, Options>(
         {
           include: /\.(jsx?|tsx?|vue|svelte)$/,
           exclude: /node_modules/,
@@ -30,7 +30,7 @@ export default function eslintPlugin(options: Options = {}): Plugin {
           throwOnWarning: true,
           throwOnError: true,
         },
-        options
+        rawOptions
       )
       const {
         include,
@@ -41,7 +41,7 @@ export default function eslintPlugin(options: Options = {}): Plugin {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         throwOnWarning,
         ...eslintOptions
-      } = userOptions
+      } = options
 
       filter = createFilter(include, exclude)
       eslint = new ESLint(eslintOptions)
@@ -62,17 +62,18 @@ export default function eslintPlugin(options: Options = {}): Plugin {
       if (!filter(filePath) || (await eslint.isPathIgnored(filePath))) {
         return null
       }
+      console.log(filePath)
 
-      if (userOptions.cache && !pathCache.has(filePath)) {
+      if (options.cache && !pathCache.has(filePath)) {
         pathCache.add(filePath)
       }
 
-      const report = await eslint.lintFiles(userOptions.cache ? Array.from(pathCache) : filePath)
-      const hasWarnings = userOptions.throwOnWarning && report.some((item) => item.warningCount > 0)
-      const hasErrors = userOptions.throwOnError && report.some((item) => item.errorCount > 0)
+      const report = await eslint.lintFiles(options.cache ? Array.from(pathCache) : filePath)
+      const hasWarnings = options.throwOnWarning && report.some((item) => item.warningCount > 0)
+      const hasErrors = options.throwOnError && report.some((item) => item.errorCount > 0)
       const result = formatter(report)
 
-      if (userOptions.fix && report) {
+      if (options.fix && report) {
         ESLint.outputFixes(report)
       }
 
