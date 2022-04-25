@@ -30,6 +30,7 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
           emitWarning: true,
           emitError: true,
           failOnWarning: false,
+          failOnError: true,
           throwOnWarning: false,
           throwOnError: false,
         },
@@ -83,7 +84,11 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
       if (hasError && (options.emitError || options.throwOnError)) {
         const error = typeof result === 'string' ? result : await result
 
-        this.error(error)
+        if (options.failOnError) {
+          this.error(error)
+        } else {
+          console.log(error)
+        }
       }
 
       return null

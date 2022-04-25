@@ -37,8 +37,7 @@ You can pass [eslint options](https://eslint.org/docs/developer-guide/nodejs-api
 - Type: `boolean`
 - Default: `false`
 
-Decrease execution time.  
-`Beta` Cache now correctly recognizes file changes, you can try it out.
+Decrease execution time, `Beta` Cache now correctly recognizes file changes, you can try it out.
 
 ### `fix`
 
@@ -89,6 +88,13 @@ The errors found will be printed.
 
 Will cause the module build to fail if there are any warnings, based on `emitWarning`.
 
+### `failOnError`
+
+- Type: `boolean`
+- Default: `true`
+
+Will cause the module build to fail if there are any errors, based on `emitError`.
+
 ### `throwOnWarning`
 
 - Type: `boolean`
@@ -100,10 +106,10 @@ The warings found will be emitted.
 ### `throwOnError`
 
 - Type: `boolean`
-- Default: `true`
+- Default: `false`
 - Deprecated: use `emitError`
 
-The errors found will be emitted, default to true.
+The errors found will be emitted.
 
 ## License
 

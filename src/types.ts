@@ -15,6 +15,8 @@ export interface Options extends ESLint.Options {
   emitError?: boolean
   /** Will cause the module build to fail if there are any warnings, based on emitWarning */
   failOnWarning?: boolean
+  /** Will cause the module build to fail if there are any errors, based on emitError */
+  failOnError?: boolean
   /**
    * The warings found will be emitted
    * @deprecated
