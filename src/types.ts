@@ -11,6 +11,8 @@ export interface Options extends ESLint.Options {
   formatter?: string | ESLint.Formatter['format']
   /** The warings found will be printed */
   emitWarning?: boolean
+  /** Will cause the module build to fail if there are any warnings, based on emitWarning */
+  failOnWarning?: boolean
   /**
    * The warings found will be emitted
    * @deprecated

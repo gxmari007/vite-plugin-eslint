@@ -75,6 +75,13 @@ Custom error formatter or the name of a built-in formatter.
 
 The warings found will be printed.
 
+### `failOnWarning`
+
+- Type: `boolean`
+- Default: `false`
+
+Will cause the module build to fail if there are any warnings, based on `emitWarning`.
+
 ### `throwOnWarning`
 
 - Type: `boolean`

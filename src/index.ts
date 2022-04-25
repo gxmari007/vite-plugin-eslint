@@ -27,8 +27,10 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
           // Use vite cacheDir as default
           cacheLocation: resolve(config.cacheDir, '.eslintcache'),
           formatter: 'stylish',
-          throwOnWarning: true,
-          throwOnError: true,
+          emitWarning: true,
+          failOnWarning: false,
+          throwOnWarning: false,
+          throwOnError: false,
         },
         rawOptions
       )
@@ -70,7 +72,11 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
       if (hasWarning && (options.emitWarning || options.throwOnWarning)) {
         const warning = typeof result === 'string' ? result : await result
 
-        this.warn(warning)
+        if (options.failOnWarning) {
+          this.error(warning)
+        } else {
+          this.warn(warning)
+        }
       }
 
       if (hasErrors) {

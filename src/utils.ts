@@ -8,8 +8,23 @@ export function parseRequest(id: string) {
 }
 
 export function pickESLintOptions(options: Options): ESLint.Options {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { include, exclude, formatter, throwOnError, throwOnWarning, ...eslintOptions } = options
+  const {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    include,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    exclude,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    formatter,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    emitWarning,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    failOnWarning,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    throwOnError,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    throwOnWarning,
+    ...eslintOptions
+  } = options
 
   return eslintOptions
 }
