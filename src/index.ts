@@ -28,6 +28,7 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
           cacheLocation: resolve(config.cacheDir, '.eslintcache'),
           formatter: 'stylish',
           emitWarning: true,
+          emitError: true,
           failOnWarning: false,
           throwOnWarning: false,
           throwOnError: false,
@@ -62,7 +63,7 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
 
       const report = await eslint.lintFiles(options.cache ? Array.from(pathCache) : filePath)
       const hasWarning = report.some((item) => item.warningCount > 0)
-      const hasErrors = options.throwOnError && report.some((item) => item.errorCount > 0)
+      const hasError = report.some((item) => item.errorCount > 0)
       const result = formatter(report)
 
       if (options.fix && report) {
@@ -79,8 +80,10 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
         }
       }
 
-      if (hasErrors) {
-        this.error(typeof result === 'string' ? result : await result)
+      if (hasError && (options.emitError || options.throwOnError)) {
+        const error = typeof result === 'string' ? result : await result
+
+        this.error(error)
       }
 
       return null

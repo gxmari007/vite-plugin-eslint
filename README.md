@@ -75,6 +75,13 @@ Custom error formatter or the name of a built-in formatter.
 
 The warings found will be printed.
 
+### `emitError`
+
+- Type: `boolean`
+- Default: `true`
+
+The errors found will be printed.
+
 ### `failOnWarning`
 
 - Type: `boolean`
@@ -94,6 +101,7 @@ The warings found will be emitted.
 
 - Type: `boolean`
 - Default: `true`
+- Deprecated: use `emitError`
 
 The errors found will be emitted, default to true.
 

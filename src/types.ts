@@ -11,6 +11,8 @@ export interface Options extends ESLint.Options {
   formatter?: string | ESLint.Formatter['format']
   /** The warings found will be printed */
   emitWarning?: boolean
+  /** The errors found will be printed */
+  emitError?: boolean
   /** Will cause the module build to fail if there are any warnings, based on emitWarning */
   failOnWarning?: boolean
   /**
@@ -18,6 +20,9 @@ export interface Options extends ESLint.Options {
    * @deprecated
    */
   throwOnWarning?: boolean
-  /** The errors found will be emitted */
+  /**
+   * The errors found will be emitted
+   * @deprecated
+   */
   throwOnError?: boolean
 }

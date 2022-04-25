@@ -18,6 +18,8 @@ export function pickESLintOptions(options: Options): ESLint.Options {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     emitWarning,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    emitError,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     failOnWarning,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     throwOnError,
