@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/gxmari007/vite-plugin-eslint/compare/v1.5.2...v1.6.0) (2022-04-25)
+
+
+### Features
+
+* add `emitError` replace `throwOnError` ([063109e](https://github.com/gxmari007/vite-plugin-eslint/commit/063109e94275da0af28a1eb908a944c35d1860b3))
+* add `emitWarning` replace `throwOnWarning` ([2f1b643](https://github.com/gxmari007/vite-plugin-eslint/commit/2f1b6438bab42be06d1c37ebb650ca7a802f3314))
+* add `failOnError`, if there are any errors to make module build fails ([cc72a01](https://github.com/gxmari007/vite-plugin-eslint/commit/cc72a01565f46a727de7eff526b71dfecf2c2424)), closes [#24](https://github.com/gxmari007/vite-plugin-eslint/issues/24)
+* add `failOnWarning`, if there are any warnings when the module build fails ([f2e800f](https://github.com/gxmari007/vite-plugin-eslint/commit/f2e800f74fcea34af176a6d82e8867d2f58a9459))
+
+
+### Bug Fixes
+
+* when cache is true, some file change will not trigger cache file update ([f196bab](https://github.com/gxmari007/vite-plugin-eslint/commit/f196babd6acd98c0530cd9d4b5f68e61ad2fe0d5))
+
 ### [1.5.2](https://github.com/gxmari007/vite-plugin-eslint/compare/v1.5.1...v1.5.2) (2022-04-21)
 
 
