@@ -5,7 +5,7 @@ import { createFilter } from '@rollup/pluginutils'
 
 import { name } from '../package.json'
 import { Options } from './types'
-import { parseRequest } from './utils'
+import { parseRequest, pickESLintOptions } from './utils'
 
 export { Options }
 
@@ -32,26 +32,17 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
         },
         rawOptions
       )
-      const {
-        include,
-        exclude,
-        formatter: userFormatter,
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        throwOnError,
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        throwOnWarning,
-        ...eslintOptions
-      } = options
+      const eslintOptions = pickESLintOptions(options)
 
-      filter = createFilter(include, exclude)
+      filter = createFilter(options.include, options.exclude)
       eslint = new ESLint(eslintOptions)
 
-      switch (typeof userFormatter) {
+      switch (typeof options.formatter) {
         case 'string':
-          formatter = (await eslint.loadFormatter(userFormatter)).format
+          formatter = (await eslint.loadFormatter(options.formatter)).format
           break
         case 'function':
-          formatter = userFormatter
+          formatter = options.formatter
         default:
           break
       }
@@ -68,7 +59,7 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
       }
 
       const report = await eslint.lintFiles(options.cache ? Array.from(pathCache) : filePath)
-      const hasWarnings = options.throwOnWarning && report.some((item) => item.warningCount > 0)
+      const hasWarning = report.some((item) => item.warningCount > 0)
       const hasErrors = options.throwOnError && report.some((item) => item.errorCount > 0)
       const result = formatter(report)
 
@@ -76,8 +67,10 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
         ESLint.outputFixes(report)
       }
 
-      if (hasWarnings) {
-        this.warn(typeof result === 'string' ? result : await result)
+      if (hasWarning && (options.emitWarning || options.throwOnWarning)) {
+        const warning = typeof result === 'string' ? result : await result
+
+        this.warn(warning)
       }
 
       if (hasErrors) {

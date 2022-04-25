@@ -1,7 +1,7 @@
 import type { ESLint } from 'eslint'
 import type { FilterPattern } from '@rollup/pluginutils'
 
-/** ESlint plugin options, extending from ESlint options */
+/** Plugin options, extending from ESlint options */
 export interface Options extends ESLint.Options {
   /** A single file, or array of files, to include when linting */
   include?: FilterPattern
@@ -9,7 +9,12 @@ export interface Options extends ESLint.Options {
   exclude?: FilterPattern
   /** Custom error formatter or the name of a built-in formatter */
   formatter?: string | ESLint.Formatter['format']
-  /** The warings found will be emitted */
+  /** The warings found will be printed */
+  emitWarning?: boolean
+  /**
+   * The warings found will be emitted
+   * @deprecated
+   */
   throwOnWarning?: boolean
   /** The errors found will be emitted */
   throwOnError?: boolean
