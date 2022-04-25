@@ -1,6 +1,8 @@
 # vite-plugin-eslint
 
 [![npm](https://img.shields.io/npm/v/vite-plugin-eslint)](https://www.npmjs.com/package/vite-plugin-eslint)
+![npm peer dependency version](https://img.shields.io/npm/dependency-version/vite-plugin-eslint/peer/vite)
+![npm peer dependency version](https://img.shields.io/npm/dependency-version/vite-plugin-eslint/peer/eslint)
 [![GitHub license](https://img.shields.io/github/license/gxmari007/vite-plugin-eslint)](https://github.com/gxmari007/vite-plugin-eslint/blob/master/LICENSE)
 
 ESLint plugin for vite.
