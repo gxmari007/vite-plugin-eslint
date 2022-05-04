@@ -56,7 +56,7 @@ A single file, or array of files, to include when linting.
 ### `exclude`
 
 - Type: `string | RegExp | ReadonlyArray<string | RegExp>`
-- Default: `/node_modules/`
+- Default: `[/virtual:/, /node_modules/]`
 
 A single file, or array of files, to exclude when linting.
 

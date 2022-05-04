@@ -23,7 +23,7 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
       options = Object.assign<Options, Options>(
         {
           include: /\.(jsx?|tsx?|vue|svelte)$/,
-          exclude: /node_modules/,
+          exclude: [/virtual:/, /node_modules/],
           // Use vite cacheDir as default
           cacheLocation: resolve(config.cacheDir, '.eslintcache'),
           formatter: 'stylish',
