@@ -33,6 +33,8 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
           failOnError: true,
           throwOnWarning: false,
           throwOnError: false,
+          fix: false,
+          cache: false,
         },
         rawOptions
       )

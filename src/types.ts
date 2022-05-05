@@ -17,6 +17,10 @@ export interface Options extends ESLint.Options {
   failOnWarning?: boolean
   /** Will cause the module build to fail if there are any errors, based on emitError */
   failOnError?: boolean
+  /** Auto fix source code */
+  fix?: boolean
+  /** caches lint results and uses it if each target file is not changed */
+  cache?: boolean
   /**
    * The warings found will be emitted
    * @deprecated
