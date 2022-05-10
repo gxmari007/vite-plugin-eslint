@@ -9,23 +9,29 @@ ESLint plugin for vite.
 
 ## Install
 
+```bash
+npm install eslint vite-plugin-eslint --save-dev
+# or
+yarn add eslint vite-plugin-eslint -D
 ```
-npm install vite-plugin-eslint --save-dev
+
+If using Typescript, you need to install @types/eslint to ensure the full type is exported
+
+```sh
+npm install @types/eslint --save-dev
 # or
-yarn add vite-plugin-eslint -D
-# or
-pnpm add vite-plugin-eslint -D
+yarn add @types/eslint -D
 ```
 
 ## Usage
 
 ```js
-import { defineConfig } from 'vite';
-import eslintPlugin from 'vite-plugin-eslint';
+import { defineConfig } from 'vite'
+import eslint from 'vite-plugin-eslint'
 
 export default defineConfig({
-  plugins: [eslintPlugin()],
-});
+  plugins: [eslint()]
+})
 ```
 
 ## Options
