@@ -15,14 +15,6 @@ npm install eslint vite-plugin-eslint --save-dev
 yarn add eslint vite-plugin-eslint -D
 ```
 
-If using Typescript, you need to install @types/eslint to ensure the full type is exported
-
-```sh
-npm install @types/eslint --save-dev
-# or
-yarn add @types/eslint -D
-```
-
 ## Usage
 
 ```js
