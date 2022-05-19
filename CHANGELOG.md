@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.1](https://github.com/gxmari007/vite-plugin-eslint/compare/v1.6.0...v1.6.1) (2022-05-19)
+
+
+### Bug Fixes
+
+* add @types/eslint dependency to resolve property type incompleteness ([b73285f](https://github.com/gxmari007/vite-plugin-eslint/commit/b73285f40c95bd6387b8e26d5e75d43056f10043)), closes [#31](https://github.com/gxmari007/vite-plugin-eslint/issues/31)
+* make sure to export eslint parameter types ([7d7d3b8](https://github.com/gxmari007/vite-plugin-eslint/commit/7d7d3b8b9220ec05543ae027cce9076774e49ac6))
+
 ## [1.6.0](https://github.com/gxmari007/vite-plugin-eslint/compare/v1.5.2...v1.6.0) (2022-04-25)
 
 
