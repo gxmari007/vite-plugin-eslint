@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/gxmari007/vite-plugin-eslint/compare/v1.6.1...v1.7.0) (2022-07-19)
+
+
+### Features
+
+* support vite3 ([3365c24](https://github.com/gxmari007/vite-plugin-eslint/commit/3365c24fa0029f2c6ce7eb93707cb3c361131acc))
+
 ### [1.6.1](https://github.com/gxmari007/vite-plugin-eslint/compare/v1.6.0...v1.6.1) (2022-05-19)
 
 
