@@ -34,6 +34,9 @@
       "path": "cz-conventional-changelog"
     }
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "dependencies": {
     "@rollup/pluginutils": "^4.2.1",
     "@types/eslint": "^8.4.5",
