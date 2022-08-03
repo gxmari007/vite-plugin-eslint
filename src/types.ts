@@ -3,6 +3,8 @@ import type { FilterPattern } from '@rollup/pluginutils'
 
 /** Plugin options, extending from ESlint options */
 export interface Options extends ESLint.Options {
+  /** Path to ESLint instance that will be used for linting */
+  eslintPath?: string
   /** A single file, or array of files, to include when linting */
   include?: FilterPattern
   /** A single file, or array of files, to exclude when linting */

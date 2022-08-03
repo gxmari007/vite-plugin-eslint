@@ -1,5 +1,6 @@
-// import { existsSync, readFileSync } from 'fs'
 import type { ESLint } from 'eslint'
+import type { PluginContext } from 'rollup'
+import { existsSync } from 'node:fs'
 
 import type { Options } from './types'
 
@@ -33,22 +34,21 @@ export function pickESLintOptions(options: Options): ESLint.Options {
   return eslintOptions
 }
 
-// export function readESLintCache(path: string) {
-//   if (existsSync(path)) {
-//     const content = readFileSync(path, { encoding: 'utf-8' })
+export function isVirtualModule(module: string) {
+  return !existsSync(module)
+}
 
-//     if (content) {
-//       try {
-//         const data = JSON.parse(content)
+export async function to<R, E = Error>(func: () => Promise<R>) {
+  return func()
+    .then((value) => [null, value])
+    .catch((error: E) => [error, null])
+}
 
-//         if (Array.isArray(data) && data[0]) {
-//           return new Set<string>(Object.keys(data[0]))
-//         }
-//       } catch (error) {
-//         console.log(error)
-//       }
-//     }
-//   }
-
-//   return new Set<string>()
-// }
+export function checkModule(
+  ctx: PluginContext,
+  eslint: ESLint,
+  files: string | string[],
+  formatter: ESLint.Formatter['format']
+) {
+  console.log('check module')
+}

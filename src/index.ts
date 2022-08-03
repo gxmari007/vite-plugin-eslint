@@ -20,6 +20,7 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
   return {
     name,
     async configResolved(config) {
+      console.log('config')
       options = Object.assign<Options, Options>(
         {
           include: /\.(jsx?|tsx?|vue|svelte)$/,
@@ -51,7 +52,11 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
           break
       }
     },
+    buildStart() {
+      console.log('build')
+    },
     async transform(_, id) {
+      console.log('transform')
       const filePath = parseRequest(id)
 
       if (!filter(filePath) || (await eslint.isPathIgnored(filePath))) {
