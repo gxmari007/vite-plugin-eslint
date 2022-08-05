@@ -1,6 +1,5 @@
-import type { ESLint } from 'eslint'
 import type { PluginContext } from 'rollup'
-import { existsSync } from 'node:fs'
+import { ESLint } from 'eslint'
 
 import type { Options } from './types'
 
@@ -34,21 +33,60 @@ export function pickESLintOptions(options: Options): ESLint.Options {
   return eslintOptions
 }
 
-export function isVirtualModule(module: string) {
-  return !existsSync(module)
+export async function to<R, E = Error>(promise: Promise<R>) {
+  return promise
+    .then<[null, R]>((data) => [null, data])
+    .catch<[E, undefined]>((error: E) => [error, undefined])
 }
 
-export async function to<R, E = Error>(func: () => Promise<R>) {
-  return func()
-    .then((value) => [null, value])
-    .catch((error: E) => [error, null])
-}
-
-export function checkModule(
+export async function checkModule(
   ctx: PluginContext,
   eslint: ESLint,
   files: string | string[],
-  formatter: ESLint.Formatter['format']
+  options: Options,
+  formatter: ESLint.Formatter['format'],
+  outputFixes: typeof ESLint.outputFixes
 ) {
-  console.log('check module')
+  const [error, report] = await to(eslint.lintFiles(files))
+
+  if (error) {
+    return Promise.reject(error)
+  }
+
+  const hasWarning = report.some((item) => item.warningCount > 0)
+  const hasError = report.some((item) => item.errorCount > 0)
+  const result = formatter(report)
+
+  // Auto fix error
+  if (options.fix && report) {
+    const [error] = await to(outputFixes(report))
+
+    if (error) {
+      return Promise.reject(error)
+    }
+  }
+
+  // Throw warning message
+  if (hasWarning && (options.emitWarning || options.throwOnWarning)) {
+    const warning = typeof result === 'string' ? result : await result
+
+    if (options.failOnWarning) {
+      ctx.error(warning)
+    } else {
+      ctx.warn(warning)
+    }
+  }
+
+  // Throw error message
+  if (hasError && (options.emitError || options.throwOnError)) {
+    const error = typeof result === 'string' ? result : await result
+
+    if (options.failOnError) {
+      ctx.error(error)
+    } else {
+      console.log(error)
+    }
+  }
+
+  return Promise.resolve()
 }

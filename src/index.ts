@@ -5,7 +5,7 @@ import { createFilter } from '@rollup/pluginutils'
 
 import { name } from '../package.json'
 import { Options } from './types'
-import { parseRequest, pickESLintOptions } from './utils'
+import { checkModule, parseRequest, pickESLintOptions, to } from './utils'
 
 export { Options }
 
@@ -14,13 +14,10 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
   let filter: ReturnType<typeof createFilter>
   let formatter: ESLint.Formatter['format']
   let options: Options
-  // If cache is true, it will save all path.
-  const pathCache = new Set<string>()
 
   return {
     name,
     async configResolved(config) {
-      console.log('config')
       options = Object.assign<Options, Options>(
         {
           include: /\.(jsx?|tsx?|vue|svelte)$/,
@@ -40,60 +37,38 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
       const eslintOptions = pickESLintOptions(options)
 
       filter = createFilter(options.include, options.exclude)
-      eslint = new ESLint(eslintOptions)
+      // eslint = new ESLint(eslintOptions)
 
-      switch (typeof options.formatter) {
-        case 'string':
-          formatter = (await eslint.loadFormatter(options.formatter)).format
-          break
-        case 'function':
-          formatter = options.formatter
-        default:
-          break
+      // switch (typeof options.formatter) {
+      //   case 'string':
+      //     formatter = (await eslint.loadFormatter(options.formatter)).format
+      //     break
+      //   case 'function':
+      //     formatter = options.formatter
+      //   default:
+      //     break
+      // }
+    },
+    async buildStart() {
+      const [error, module] = await to(import(options.eslintPath ?? 'eslint'))
+
+      if (error) {
+        this.error('Failed to import ESLint, do you install or configure eslintPath?')
       }
     },
-    buildStart() {
-      console.log('build')
-    },
     async transform(_, id) {
-      console.log('transform')
       const filePath = parseRequest(id)
 
       if (!filter(filePath) || (await eslint.isPathIgnored(filePath))) {
         return null
       }
 
-      if (options.cache) {
-        pathCache.add(filePath)
-      }
+      const [error] = await to(
+        checkModule(this, eslint, filePath, options, formatter, ESLint.outputFixes)
+      )
 
-      const report = await eslint.lintFiles(options.cache ? Array.from(pathCache) : filePath)
-      const hasWarning = report.some((item) => item.warningCount > 0)
-      const hasError = report.some((item) => item.errorCount > 0)
-      const result = formatter(report)
-
-      if (options.fix && report) {
-        ESLint.outputFixes(report)
-      }
-
-      if (hasWarning && (options.emitWarning || options.throwOnWarning)) {
-        const warning = typeof result === 'string' ? result : await result
-
-        if (options.failOnWarning) {
-          this.error(warning)
-        } else {
-          this.warn(warning)
-        }
-      }
-
-      if (hasError && (options.emitError || options.throwOnError)) {
-        const error = typeof result === 'string' ? result : await result
-
-        if (options.failOnError) {
-          this.error(error)
-        } else {
-          console.log(error)
-        }
+      if (error) {
+        this.error(error.message)
       }
 
       return null
