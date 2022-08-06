@@ -5,7 +5,7 @@ import { createFilter } from '@rollup/pluginutils'
 
 import { name } from '../package.json'
 import { Options } from './types'
-import { checkModule, parseRequest, pickESLintOptions, to } from './utils'
+import { checkModule, isVirtualModule, parseRequest, pickESLintOptions, to } from './utils'
 
 export { Options }
 
@@ -60,7 +60,11 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
     async transform(_, id) {
       const filePath = parseRequest(id)
 
-      if (!filter(filePath) || (await eslint.isPathIgnored(filePath))) {
+      if (
+        !filter(filePath) ||
+        (await eslint.isPathIgnored(filePath)) ||
+        isVirtualModule(filePath)
+      ) {
         return null
       }
 

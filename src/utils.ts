@@ -1,10 +1,15 @@
 import type { PluginContext } from 'rollup'
+import { existsSync } from 'node:fs'
 import { ESLint } from 'eslint'
 
 import type { Options } from './types'
 
 export function parseRequest(id: string) {
   return id.split('?', 2)[0]
+}
+
+export function isVirtualModule(file: string) {
+  return !existsSync(file)
 }
 
 export function pickESLintOptions(options: Options): ESLint.Options {
