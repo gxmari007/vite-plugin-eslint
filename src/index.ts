@@ -1,10 +1,9 @@
 import { Plugin } from 'vite'
 import { resolve } from 'path'
-import { ESLint } from 'eslint'
 import { createFilter } from '@rollup/pluginutils'
 
+import type { Options, OutputFixes, ESLint } from './types'
 import { name } from '../package.json'
-import { Options } from './types'
 import { checkModule, isVirtualModule, parseRequest, pickESLintOptions, to } from './utils'
 
 export { Options }
@@ -14,6 +13,7 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
   let filter: ReturnType<typeof createFilter>
   let formatter: ESLint.Formatter['format']
   let options: Options
+  let outputFixes: OutputFixes
 
   return {
     name,
@@ -44,6 +44,7 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
         const eslintOptions = pickESLintOptions(options)
 
         eslint = new module.ESLint(eslintOptions)
+        outputFixes = module.ESLint.outputFixes
         filter = createFilter(options.include, options.exclude)
 
         switch (typeof options.formatter) {
@@ -68,9 +69,7 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
         return null
       }
 
-      const [error] = await to(
-        checkModule(this, eslint, filePath, options, formatter, ESLint.outputFixes)
-      )
+      const [error] = await to(checkModule(this, eslint, filePath, options, formatter, outputFixes))
 
       if (error) {
         this.error(error.message)

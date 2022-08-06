@@ -1,5 +1,8 @@
-import type { ESLint } from 'eslint'
 import type { FilterPattern } from '@rollup/pluginutils'
+import { ESLint } from 'eslint'
+
+export { ESLint }
+export type OutputFixes = typeof ESLint.outputFixes
 
 /** Plugin options, extending from ESlint options */
 export interface Options extends ESLint.Options {

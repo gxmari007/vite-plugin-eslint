@@ -1,8 +1,7 @@
 import type { PluginContext } from 'rollup'
 import { existsSync } from 'node:fs'
-import { ESLint } from 'eslint'
 
-import type { Options } from './types'
+import type { Options, ESLint, OutputFixes } from './types'
 
 export function parseRequest(id: string) {
   return id.split('?', 2)[0]
@@ -52,7 +51,7 @@ export async function checkModule(
   files: string | string[],
   options: Options,
   formatter: ESLint.Formatter['format'],
-  outputFixes: typeof ESLint.outputFixes
+  outputFixes: OutputFixes
 ) {
   const [error, report] = await to(eslint.lintFiles(files))
 
