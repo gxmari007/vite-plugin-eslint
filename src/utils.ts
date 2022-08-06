@@ -10,6 +10,8 @@ export function parseRequest(id: string) {
 export function pickESLintOptions(options: Options): ESLint.Options {
   const {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    eslintPath,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     include,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     exclude,

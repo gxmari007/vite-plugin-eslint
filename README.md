@@ -44,6 +44,13 @@ Decrease execution time, `Beta` Cache now correctly recognizes file changes, you
 
 Auto fix source code.
 
+### `eslintPath`
+
+- Type: `string`
+- Default: `eslint`
+
+Path to `eslint` instance that will be used for linting.
+
 ### `include`
 
 - Type: `string | RegExp | ReadonlyArray<string | RegExp>`

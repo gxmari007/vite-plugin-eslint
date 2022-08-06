@@ -34,26 +34,27 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
         },
         rawOptions
       )
-      const eslintOptions = pickESLintOptions(options)
-
-      filter = createFilter(options.include, options.exclude)
-      // eslint = new ESLint(eslintOptions)
-
-      // switch (typeof options.formatter) {
-      //   case 'string':
-      //     formatter = (await eslint.loadFormatter(options.formatter)).format
-      //     break
-      //   case 'function':
-      //     formatter = options.formatter
-      //   default:
-      //     break
-      // }
     },
     async buildStart() {
       const [error, module] = await to(import(options.eslintPath ?? 'eslint'))
 
       if (error) {
         this.error('Failed to import ESLint, do you install or configure eslintPath?')
+      } else {
+        const eslintOptions = pickESLintOptions(options)
+
+        eslint = new module.ESLint(eslintOptions)
+        filter = createFilter(options.include, options.exclude)
+
+        switch (typeof options.formatter) {
+          case 'string':
+            formatter = (await eslint.loadFormatter(options.formatter)).format
+            break
+          case 'function':
+            formatter = options.formatter
+          default:
+            break
+        }
       }
     },
     async transform(_, id) {
