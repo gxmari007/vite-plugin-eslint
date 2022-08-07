@@ -16,6 +16,8 @@ export function pickESLintOptions(options: Options): ESLint.Options {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     eslintPath,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    lintOnStart,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     include,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     exclude,

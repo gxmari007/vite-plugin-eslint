@@ -20,7 +20,16 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
     async configResolved(config) {
       options = Object.assign<Options, Options>(
         {
-          include: /\.(jsx?|tsx?|vue|svelte)$/,
+          lintOnStart: false,
+          // include: /\.(jsx?|tsx?|vue|svelte)$/,
+          include: [
+            './**/*.js',
+            './**/*.jsx',
+            './**/*.ts',
+            './**/*.tsx',
+            './**/*.vue',
+            './**/*.svelte',
+          ],
           exclude: /node_modules/,
           // Use vite cacheDir as default
           cacheLocation: resolve(config.cacheDir, '.eslintcache'),
@@ -55,6 +64,16 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
             formatter = options.formatter
           default:
             break
+        }
+
+        if (options.lintOnStart && options.include) {
+          const [error] = await to(
+            checkModule(this, eslint, options.include, options, formatter, outputFixes)
+          )
+
+          if (error) {
+            this.error(error.message)
+          }
         }
       }
     },

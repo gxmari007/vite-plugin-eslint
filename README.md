@@ -60,7 +60,7 @@ A single file, or array of files, to include when linting.
 
 ### `exclude`
 
-- Type: `string | RegExp | ReadonlyArray<string | RegExp>`
+- Type: `string | RegExp | (string | RegExp)[]`
 - Default: `/node_modules/`
 
 A single file, or array of files, to exclude when linting.

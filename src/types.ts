@@ -8,8 +8,9 @@ export type OutputFixes = typeof ESLint.outputFixes
 export interface Options extends ESLint.Options {
   /** Path to ESLint instance that will be used for linting */
   eslintPath?: string
+  lintOnStart?: boolean
   /** A single file, or array of files, to include when linting */
-  include?: FilterPattern
+  include?: string | string[]
   /** A single file, or array of files, to exclude when linting */
   exclude?: FilterPattern
   /** Custom error formatter or the name of a built-in formatter */
