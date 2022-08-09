@@ -1,4 +1,3 @@
-import type { FilterPattern } from '@rollup/pluginutils'
 import { ESLint } from 'eslint'
 
 export { ESLint }
@@ -8,11 +7,12 @@ export type OutputFixes = typeof ESLint.outputFixes
 export interface Options extends ESLint.Options {
   /** Path to ESLint instance that will be used for linting */
   eslintPath?: string
+  /** Check all matching files on project startup */
   lintOnStart?: boolean
   /** A single file, or array of files, to include when linting */
   include?: string | string[]
   /** A single file, or array of files, to exclude when linting */
-  exclude?: FilterPattern
+  exclude?: string | string[]
   /** Custom error formatter or the name of a built-in formatter */
   formatter?: string | ESLint.Formatter['format']
   /** The warings found will be printed */

@@ -51,17 +51,24 @@ Auto fix source code.
 
 Path to `eslint` instance that will be used for linting.
 
+### `lintOnStart`
+
+- Type: `boolean`
+- Default: `false`
+
+Check all matching files on project startup.
+
 ### `include`
 
-- Type: `string | RegExp | ReadonlyArray<string | RegExp>`
+- Type: `string | string[]`
 - Default: `/\.(jsx?|tsx?|vue|svelte)$/`
 
 A single file, or array of files, to include when linting.
 
 ### `exclude`
 
-- Type: `string | RegExp | (string | RegExp)[]`
-- Default: `/node_modules/`
+- Type: `string | string[]`
+- Default: `[node_modules]`
 
 A single file, or array of files, to exclude when linting.
 
@@ -99,22 +106,6 @@ Will cause the module build to fail if there are any warnings, based on `emitWar
 - Default: `true`
 
 Will cause the module build to fail if there are any errors, based on `emitError`.
-
-### `throwOnWarning`
-
-- Type: `boolean`
-- Default: `false`
-- Deprecated: use `emitWarning`
-
-The warings found will be emitted.
-
-### `throwOnError`
-
-- Type: `boolean`
-- Default: `false`
-- Deprecated: use `emitError`
-
-The errors found will be emitted.
 
 ## License
 

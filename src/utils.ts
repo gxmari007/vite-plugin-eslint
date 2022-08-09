@@ -31,10 +31,6 @@ export function pickESLintOptions(options: Options): ESLint.Options {
     failOnWarning,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     failOnError,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    throwOnError,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    throwOnWarning,
     ...eslintOptions
   } = options
 
@@ -75,7 +71,7 @@ export async function checkModule(
   }
 
   // Throw warning message
-  if (hasWarning && (options.emitWarning || options.throwOnWarning)) {
+  if (hasWarning && options.emitWarning) {
     const warning = typeof result === 'string' ? result : await result
 
     if (options.failOnWarning) {
@@ -86,7 +82,7 @@ export async function checkModule(
   }
 
   // Throw error message
-  if (hasError && (options.emitError || options.throwOnError)) {
+  if (hasError && options.emitError) {
     const error = typeof result === 'string' ? result : await result
 
     if (options.failOnError) {

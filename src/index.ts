@@ -1,5 +1,5 @@
-import { Plugin } from 'vite'
-import { resolve } from 'path'
+import type { Plugin } from 'vite'
+import { resolve } from 'node:path'
 import { createFilter } from '@rollup/pluginutils'
 
 import type { Options, OutputFixes, ESLint } from './types'
@@ -21,16 +21,8 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
       options = Object.assign<Options, Options>(
         {
           lintOnStart: false,
-          // include: /\.(jsx?|tsx?|vue|svelte)$/,
-          include: [
-            './**/*.js',
-            './**/*.jsx',
-            './**/*.ts',
-            './**/*.tsx',
-            './**/*.vue',
-            './**/*.svelte',
-          ],
-          exclude: /node_modules/,
+          include: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx', '**/*.vue', '**/*.svelte'],
+          exclude: ['node_modules'],
           // Use vite cacheDir as default
           cacheLocation: resolve(config.cacheDir, '.eslintcache'),
           formatter: 'stylish',
@@ -38,8 +30,7 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
           emitError: true,
           failOnWarning: false,
           failOnError: true,
-          throwOnWarning: false,
-          throwOnError: false,
+          errorOnUnmatchedPattern: false,
         },
         rawOptions
       )
