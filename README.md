@@ -56,7 +56,7 @@ Path to `eslint` instance that will be used for linting.
 - Type: `boolean`
 - Default: `false`
 
-Check all matching files on project startup.
+Check all matching files on project startup, too slow, turn on discreetly.
 
 ### `include`
 
