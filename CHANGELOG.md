@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/gxmari007/vite-plugin-eslint/compare/v1.7.0...v1.8.0) (2022-08-11)
+
+
+### Features
+
+* add `eslintPath` option to customize eslint instance ([128fc9a](https://github.com/gxmari007/vite-plugin-eslint/commit/128fc9a66e70f99b3cc47056b46dbcd5ca35b73e)), closes [#23](https://github.com/gxmari007/vite-plugin-eslint/issues/23)
+* add `lintOnStart` option ([851be59](https://github.com/gxmari007/vite-plugin-eslint/commit/851be59e637a87eed0c687b45349fc69b302a178))
+
+
+### Bug Fixes
+
+* ignore virtual modules ([f9aa112](https://github.com/gxmari007/vite-plugin-eslint/commit/f9aa1124f8fb271779f73eec1d959bcb3d5d5106)), closes [#29](https://github.com/gxmari007/vite-plugin-eslint/issues/29) [#32](https://github.com/gxmari007/vite-plugin-eslint/issues/32)
+
 ## [1.7.0](https://github.com/gxmari007/vite-plugin-eslint/compare/v1.6.1...v1.7.0) (2022-07-19)
 
 
