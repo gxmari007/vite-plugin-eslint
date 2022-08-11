@@ -61,7 +61,7 @@ Check all matching files on project startup, too slow, turn on discreetly.
 ### `include`
 
 - Type: `string | string[]`
-- Default: `/\.(jsx?|tsx?|vue|svelte)$/`
+- Default: `['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx', '**/*.vue', '**/*.svelte']`
 
 A single file, or array of files, to include when linting.
 
