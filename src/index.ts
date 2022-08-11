@@ -14,6 +14,8 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
   let formatter: ESLint.Formatter['format']
   let options: Options
   let outputFixes: OutputFixes
+  // If cache is true, it will save all path.
+  const fileCache = new Set<string>()
 
   return {
     name,
@@ -58,6 +60,8 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
         }
 
         if (options.lintOnStart && options.include) {
+          this.warn('LintOnStart is turned on, and it will check for all matching files.')
+
           const [error] = await to(
             checkModule(this, eslint, options.include, options, formatter, outputFixes)
           )
@@ -70,16 +74,30 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
     },
     async transform(_, id) {
       const filePath = parseRequest(id)
+      const isVirtual = isVirtualModule(filePath)
 
-      if (
-        !filter(filePath) ||
-        (await eslint.isPathIgnored(filePath)) ||
-        isVirtualModule(filePath)
-      ) {
+      if (isVirtual && fileCache.has(filePath)) {
+        fileCache.delete(filePath)
+      }
+
+      if (!filter(filePath) || (await eslint.isPathIgnored(filePath)) || isVirtual) {
         return null
       }
 
-      const [error] = await to(checkModule(this, eslint, filePath, options, formatter, outputFixes))
+      if (options.cache) {
+        fileCache.add(filePath)
+      }
+
+      const [error] = await to(
+        checkModule(
+          this,
+          eslint,
+          options.cache ? Array.from(fileCache) : filePath,
+          options,
+          formatter,
+          outputFixes
+        )
+      )
 
       if (error) {
         this.error(error.message)

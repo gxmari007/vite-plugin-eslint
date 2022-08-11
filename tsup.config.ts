@@ -6,4 +6,5 @@ export default defineConfig((options) => ({
   format: options.format || ['esm', 'cjs'],
   watch: options.watch || false,
   clean: true,
+  minify: true,
 }))
