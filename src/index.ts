@@ -24,7 +24,7 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
         {
           lintOnStart: false,
           include: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx', '**/*.vue', '**/*.svelte'],
-          exclude: ['node_modules'],
+          exclude: ['**/node_modules/**'],
           // Use vite cacheDir as default
           cacheLocation: resolve(config.cacheDir, '.eslintcache'),
           formatter: 'stylish',
