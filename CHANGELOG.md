@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.8.1](https://github.com/gxmari007/vite-plugin-eslint/compare/v1.8.0...v1.8.1) (2022-08-16)
+
+
+### Bug Fixes
+
+* default exclude match ([4892478](https://github.com/gxmari007/vite-plugin-eslint/commit/4892478410aa24664f89b24920d4dbd5ee139ee8))
+
 ## [1.8.0](https://github.com/gxmari007/vite-plugin-eslint/compare/v1.7.0...v1.8.0) (2022-08-11)
 
 
