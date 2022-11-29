@@ -16,6 +16,7 @@ yarn add eslint vite-plugin-eslint -D
 ```
 
 ## Usage
+In your `vite.config.js` file add:
 
 ```js
 import { defineConfig } from 'vite'
