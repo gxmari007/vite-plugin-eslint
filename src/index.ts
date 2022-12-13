@@ -80,7 +80,7 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
         fileCache.delete(filePath)
       }
 
-      if (!filter(filePath) || (await eslint.isPathIgnored(filePath)) || isVirtual) {
+      if (isVirtual || !filter(filePath) || (await eslint.isPathIgnored(filePath))) {
         return null
       }
 
