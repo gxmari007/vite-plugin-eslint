@@ -60,8 +60,6 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
         }
 
         if (options.lintOnStart && options.include) {
-          this.warn('LintOnStart is turned on, and it will check for all matching files.')
-
           const [error] = await to(
             checkModule(this, eslint, options.include, options, formatter, outputFixes)
           )
