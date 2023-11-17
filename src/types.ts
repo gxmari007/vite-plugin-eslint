@@ -15,7 +15,7 @@ export interface Options extends ESLint.Options {
   exclude?: string | string[]
   /** Custom error formatter or the name of a built-in formatter */
   formatter?: string | ESLint.Formatter['format']
-  /** The warings found will be printed */
+  /** The warnings found will be printed */
   emitWarning?: boolean
   /** The errors found will be printed */
   emitError?: boolean
@@ -23,4 +23,6 @@ export interface Options extends ESLint.Options {
   failOnWarning?: boolean
   /** Will cause the module build to fail if there are any errors, based on emitError */
   failOnError?: boolean
+  /** Use the new configuration system */
+  useFlatConfig?: boolean
 }

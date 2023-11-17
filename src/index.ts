@@ -33,20 +33,28 @@ export default function eslintPlugin(rawOptions: Options = {}): Plugin {
           failOnWarning: false,
           failOnError: true,
           errorOnUnmatchedPattern: false,
+          useFlatConfig: false,
         },
         rawOptions
       )
     },
     async buildStart() {
-      const [error, module] = await to(import(options.eslintPath ?? 'eslint'))
+      const [error, module] = await to(
+        import(
+          options.eslintPath ?? !options.useFlatConfig ? 'eslint' : 'eslint/use-at-your-own-risk'
+        )
+      )
 
       if (error) {
         this.error('Failed to import ESLint, do you install or configure eslintPath?')
       } else {
+        // TODO: This'll be better handled by getting the version of the module, as this'll change/be removed in v9 / v10
+        const eslintModule = !options.useFlatConfig ? module.ESLint : module.default.FlatESLint
+
         const eslintOptions = pickESLintOptions(options)
 
-        eslint = new module.ESLint(eslintOptions)
-        outputFixes = module.ESLint.outputFixes
+        eslint = new eslintModule(eslintOptions)
+        outputFixes = eslintModule.outputFixes
         filter = createFilter(options.include, options.exclude)
 
         switch (typeof options.formatter) {
