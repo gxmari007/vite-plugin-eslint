@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "lint": "ESLINT_USE_FLAT_CONFIG=true eslint -c ./eslint.config.mjs **/*.{ts,vue}"
   },
   "dependencies": {
     "vue": "^3.2.37",
@@ -11,7 +12,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.0.1",
-    "eslint": "^8.20.0",
+    "eslint": "^8.26.0",
     "eslint-plugin-vue": "^9.3.0",
     "vite": "^3.0.8",
     "vite-plugin-eslint": "workspace:*"

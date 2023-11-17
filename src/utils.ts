@@ -31,6 +31,8 @@ export function pickESLintOptions(options: Options): ESLint.Options {
     failOnWarning,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     failOnError,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    useFlatConfig,
     ...eslintOptions
   } = options
 
