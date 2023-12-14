@@ -4,13 +4,13 @@
   "description": "ESLint plugin for vite.",
   "author": "Xiang Gao",
   "license": "MIT",
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "require": "./dist/index.cjs"
     }
   },
   "files": [
@@ -52,7 +52,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.7.1",
     "standard-version": "^9.5.0",
-    "tsup": "^6.2.1",
+    "tsup": "^7.2.0",
     "typescript": "^4.7.4",
     "vite": "^3.0.8"
   },
